@@ -1,0 +1,358 @@
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    background: url(../img/backfround.png);
+    font-family: 'consolas', monospace;
+    color: #000;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    min-height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/*Attackontittangame*/
+
+.attackontitan {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: url(../img/levi1.png) 24 24, auto;
+}
+
+.attackontitan:hover .attackontitan__win {
+    animation: win 60s steps(1) forwards;
+}
+
+.attackontitan:hover .attackontitan__counter::after {
+    animation: timer_1 60s steps(60) forwards;
+}
+
+.attackontitan:hover .attackontitan__text span::after {
+    animation: timer_2 60s steps(60) forwards;
+}
+
+.attackontitan__body:hover .attackontitan__counter::after,
+.attackontitan__body:hover .attackontitan__text span::after {
+    animation-play-state: paused;
+}
+
+
+.attackontitan__body,
+.attackontitan__items {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.attackontitan__body::before,
+.attackontitan__body::after,
+.attackontitan__items::before,
+.attackontitan__items::after {
+    content: '';
+    pointer-events: all;
+    width: 33.333vw;
+    height: 33.333vh;
+    position: absolute;
+    z-index: 1;
+    display: inline-block;
+}
+
+.attackontitan__body::before {
+    background-image: url(../img/titan1.png);
+    width: 540px;
+    height: 510px;
+    animation: fly_1 3s infinite;
+}
+
+.attackontitan__body::after {
+    background-image: url(../img/titan2.png);
+    width: 590px;
+    height: 520px;
+    animation: fly_2 7s infinite;
+}
+
+.attackontitan__items::before {
+    background-image: url(../img/titan3.png);
+    width: 590px;
+    height: 740px;
+    animation: fly_3 5s infinite;
+}
+
+.attackontitan__items::after {
+    background-image: url(../img/titan4.png);
+    width: 635px;
+    height: 573px;
+    animation: fly_3 11s infinite;
+}
+
+/*Animation*/
+
+@keyframes fly_1 {
+    25% {
+        transform: translate(75.667vw, -20vh)
+    }
+
+    50% {
+        transform: translate(-10.667vw, -10.667vh)
+    }
+
+    75% {
+        transform: translate(0vw, 66.667vh)
+    }
+
+    0,
+    100% {
+        transform: translate(0px, 0px)
+    }
+}
+
+@keyframes fly_2 {
+    25% {
+        transform: translate(0vw, 66.667vh)
+    }
+
+    50% {
+        transform: translate(66.667vw, 0vh)
+    }
+
+    75% {
+        transform: translate(66.667vw, 66.667vh)
+    }
+
+    0,
+    100% {
+        transform: translate(0px, 0px)
+    }
+}
+
+@keyframes fly_3 {
+    25% {
+        transform: translate(66.667vw, 0vh)
+    }
+
+    50% {
+        transform: translate(0vw, 66.667vh)
+    }
+
+    75% {
+        transform: translate(66.667vw, 66.667vh)
+    }
+
+    0,
+    100% {
+        transform: translate(0px, 0px)
+    }
+}
+
+@keyframes fly_4 {
+    25% {
+        transform: translate(66.667vw, 0vh)
+    }
+
+    50% {
+        transform: translate(0vw, 66.667vh)
+    }
+
+    75% {
+        transform: translate(66.667vw, 66.667vh)
+    }
+
+    0,
+    100% {
+        transform: translate(0px, 0px)
+    }
+}
+
+/*Timer animation*/
+
+@keyframes win {
+    0% {}
+
+    100% {
+        visibility: visible;
+    }
+}
+
+
+@keyframes timer_1 {
+    0% {
+        text-indent: -300ch;
+    }
+
+    50% {
+        color: yellow;
+    }
+
+    100% {
+        color: red;
+        text-indent: 0ch;
+    }
+}
+
+@keyframes timer_2 {
+    0% {
+        text-indent: 0ch;
+    }
+
+    50% {
+        color: yellow;
+    }
+
+    100% {
+        color: red;
+        text-indent: -300ch;
+    }
+}
+
+.attackontitan__body:hover::before,
+.attackontitan__body:hover::after,
+.attackontitan__body:hover .attackontitan__items::before,
+.attackontitan__body:hover .attackontitan__items::after {
+    display: none;
+}
+
+
+.attackontitan__counter {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 72px;
+    font-size: 26px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.attackontitan__body:hover .attackontitan__items {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    background-image: url(../img/backfround.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    pointer-events: all;
+}
+
+.attackontitan__body:hover .attackontitan__text {
+    visibility: visible;
+}
+
+.attackontitan__text {
+    font-size: 40px;
+    visibility: hidden;
+
+}
+
+.attackontitan__text span {
+    font-size: 40px;
+    width: 109px;
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    color: blue;
+}
+
+.attackontitan__text span::after,
+.attackontitan__counter::after {
+    display: block;
+    content: '00:0000:0100:0200:0300:0400:0500:0600:0700:0800:0900:1000:1100:1200:1300:1400:1500:1600:1700:1800:1900:2000:2100:2200:2300:2400:2500:2600:2700:2800:2900:3000:3100:3200:3300:3400:3500:3600:3700:3800:3900:4000:4100:4200:4300:4400:4500:4600:4700:4800:4900:5000:5100:5200:5300:5400:5500:5600:5700:5800:5900:00'
+}
+
+.attackontitan__win {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(../img/backfround.png);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 40px;
+    color: greenyellow;
+    visibility: hidden;
+
+}
+
+/*AttackOnTinan Info*/
+.attackontitan__infogame {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    z-index: 50;
+}
+
+.gameinfo {
+    display: inline-block;
+    width: 87px;
+    height: 25px;
+    border-radius: 10%;
+    background: #000;
+    border: 1px solid #000;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    line-height: 23px;
+    position: relative;
+    z-index: 2;
+}
+
+.gameinfo__body {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #000;
+    color: #fff;
+    width: 250px;
+    padding: 40px 5px 35px 20px;
+}
+
+.gameinfo__body:target {
+    display: block;
+}
+
+.infogame__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.gameinfo__text {
+    margin: 0 10px 0 0;
+}
+
+.gameinfo__text p {
+    margin: 0 0 10px 0;
+}
+
+.gameinfo__text p:last-child {
+    margin: 0;
+}
